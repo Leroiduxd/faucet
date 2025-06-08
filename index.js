@@ -12,7 +12,7 @@ const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 app.post('/faucet', async (req, res) => {
   const { address } = req.body;
   if (!ethers.utils.isAddress(address)) {
-    return res.status(400).send('Invalid address');
+    return res.status(400).send({ error: 'Invalid address' });
   }
 
   try {
